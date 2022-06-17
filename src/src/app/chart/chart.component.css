@@ -1,0 +1,13 @@
+.header{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: green;
+}
+.chartCss{
+    display: block;
+    width: 26%;
+    height: 100%;
+}
+.chartContainer{
+    text-align: -webkit-center;
+}

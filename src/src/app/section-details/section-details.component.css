@@ -1,0 +1,20 @@
+.mat-header-cell, .mat-cell {
+    text-align: center;
+    border: 1px solid #CCC;
+    padding: 10px !important;
+}
+.mat-table {
+    padding: 20px;
+}
+.backBtn{
+    padding-left: 20px;
+}
+.inputWdt{
+    width: 100%;
+}
+.editSave{
+    padding: 0px 19px 12px 20px;
+}
+.saveBtn{
+    margin-right: 20px;
+}

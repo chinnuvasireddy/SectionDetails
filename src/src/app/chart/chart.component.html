@@ -1,0 +1,12 @@
+<h1 class="header text-center">% of students passed in 2018 - 2019 session</h1>
+<div *ngIf = "service.selectedGrade === ''" class="chartContainer">
+  <div class="chartCss">
+    <canvas baseChart 
+      [type]="chartType"
+      [data]="chartDatasets"
+      [labels]="chartLabels"
+      [legend]="true"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+</div>

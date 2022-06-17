@@ -1,0 +1,84 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Student Name</mat-header-cell>
+      <mat-cell *matCellDef="let dataDisplay"> {{dataDisplay.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+      <mat-cell *matCellDef="let dataDisplay; let j = index">
+        <span *ngIf = "!dataDisplay.edit">{{dataDisplay.age}} </span>
+        <span *ngIf = "dataDisplay.edit">
+          <input class="inputWdt" type="text" [(ngModel)] = "dataDisplay.age" maxlength="3" (keyup) = "onChange(dataDisplay, j)" numberOnly>
+        </span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let dataDisplay; let j = index"> 
+        <span *ngIf = "!dataDisplay.edit">{{dataDisplay.email}} </span>
+        <span *ngIf = "dataDisplay.edit">
+          <input class="inputWdt" type="email" [(ngModel)] = "dataDisplay.email" (keyup) = "onChange(dataDisplay, j)">
+        </span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="english">
+      <mat-header-cell *matHeaderCellDef>English</mat-header-cell>
+      <mat-cell *matCellDef="let dataDisplay; let j = index">
+        <span *ngIf = "!dataDisplay.edit">{{dataDisplay.english}} </span>
+        <span *ngIf = "dataDisplay.edit">
+          <input class="inputWdt" type="text" maxlength="3" [(ngModel)] = "dataDisplay.english" (keyup) = "onChange(dataDisplay, j)" numberOnly>
+        </span>
+      </mat-cell>
+    </ng-container>  
+    <ng-container matColumnDef="maths">
+        <mat-header-cell *matHeaderCellDef>Maths</mat-header-cell>
+        <mat-cell *matCellDef="let dataDisplay; let j = index">
+          <span *ngIf = "!dataDisplay.edit">{{dataDisplay.maths}} </span>
+          <span *ngIf = "dataDisplay.edit">
+            <input class="inputWdt" type="text" maxlength="3" [(ngModel)] = "dataDisplay.maths" (keyup) = "onChange(dataDisplay, j)" numberOnly>
+          </span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="science">
+        <mat-header-cell *matHeaderCellDef>Science</mat-header-cell>
+        <mat-cell *matCellDef="let dataDisplay; let j = index">
+          <span *ngIf = "!dataDisplay.edit">{{dataDisplay.science}} </span>
+          <span *ngIf = "dataDisplay.edit">
+            <input class="inputWdt" type="text" maxlength="3" [(ngModel)] = "dataDisplay.science" (keyup) = "onChange(dataDisplay, j)" numberOnly>
+          </span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="social">
+        <mat-header-cell *matHeaderCellDef>Social Studies</mat-header-cell>
+        <mat-cell *matCellDef="let dataDisplay; let j = index">
+          <span *ngIf = "!dataDisplay.edit">{{dataDisplay.social}} </span>
+          <span *ngIf = "dataDisplay.edit">
+            <input class="inputWdt" type="text" maxlength="3" [(ngModel)] = "dataDisplay.social" (keyup) = "onChange(dataDisplay, j)" numberOnly>
+          </span>
+        </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="header1">
+      <mat-header-cell *matHeaderCellDef 
+          [attr.colspan]="2" [style.flex] = "0.737"> 
+        <span *ngIf = "service.selectedGrade === 'Grade1'">First</span>
+        <span *ngIf = "service.selectedGrade === 'Grade2'">Second</span>
+        <span *ngIf = "service.selectedGrade === 'Grade3'">Third</span>&nbsp;Grade Students
+      </mat-header-cell>
+    </ng-container> 
+    <ng-container matColumnDef="header2">
+      <mat-header-cell *matHeaderCellDef [attr.colspan]="4">Marks : Out of 100</mat-header-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="['header1', 'header2']"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click) = "onRowClick(i)"></mat-row>
+</mat-table>
+<div *ngIf = "editClicked" class="editSave">
+  <button class="btn btn-primary saveBtn" (click) = "saveData()" [disabled] = "disableSave">Save</button>
+  <button class="btn btn-primary" (click) = "cancelSave()">Cancel</button>
+</div>
+
+<nav class="backBtn">
+    <a class="btn btn-primary" routerLink="/app-chart">back to chart</a>
+</nav>
